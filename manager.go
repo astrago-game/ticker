@@ -85,7 +85,7 @@ func (m *manager) RegisterJob(workerName string, object JobObject) (*Job, error)
 		Object:     object,
 	}
 	job.df = func() {
-		worker.delete(job.ID)
+		worker.Delete(job.ID)
 		m.jobs.Delete(job.ID)
 	}
 

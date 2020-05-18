@@ -11,7 +11,7 @@ type Worker interface {
 	Start(*sync.WaitGroup)
 	Stop(*sync.WaitGroup)
 	Enqueue(*Job) error
-	delete(string)
+	Delete(string)
 }
 
 var _ Worker = &genericWorker{}
@@ -23,7 +23,7 @@ type genericWorker struct {
 	lock   sync.Mutex
 }
 
-func (w *genericWorker) delete(jobId string) {
+func (w *genericWorker) Delete(jobId string) {
 	w.jobs.Delete(jobId)
 }
 
